@@ -1,0 +1,6 @@
+{
+  "name": "Totp-cli",
+  "tagline": "TOTP CLI tool written in Go.",
+  "body": "This is a simple TOTP _(Time-based One-time Password)_ CLI tool. You can manage your\r\naccounts with namespaces and protect your data with a PIN _(aka password)_.\r\n\r\n```\r\n❯ ./bin/totp-cli\r\n           add-token     Add new token\r\n                         `totp-cli add-token`\r\n                         This command will ask for the namespace, the account and the token\r\n                list     List all available namespaces or accounts under a namespace\r\n                         `totp-cli list`      => list all namespaces\r\n                         `totp-cli list myns` => list all accounts under 'myns' namespace\r\n            generate     Generate a specific OTP\r\n                         `totp-cli generate namespace.account`\r\n                help     This help message :)\r\n```\r\n\r\nTODO: Documentation :D\r\n",
+  "note": "Don't delete this file! It's used internally to help with page regeneration."
+}

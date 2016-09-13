@@ -1,0 +1,64 @@
+<!DOCTYPE html>
+<html>
+
+  <head>
+    <meta charset='utf-8'>
+    <meta http-equiv="X-UA-Compatible" content="chrome=1">
+    <meta name="description" content="Totp-cli : TOTP CLI tool written in Go.">
+
+    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
+
+    <title>Totp-cli</title>
+  </head>
+
+  <body>
+
+    <!-- HEADER -->
+    <div id="header_wrap" class="outer">
+        <header class="inner">
+          <a id="forkme_banner" href="https://github.com/Yitsushi/totp-cli">View on GitHub</a>
+
+          <h1 id="project_title">Totp-cli</h1>
+          <h2 id="project_tagline">TOTP CLI tool written in Go.</h2>
+
+            <section id="downloads">
+              <a class="zip_download_link" href="https://github.com/Yitsushi/totp-cli/zipball/master">Download this project as a .zip file</a>
+              <a class="tar_download_link" href="https://github.com/Yitsushi/totp-cli/tarball/master">Download this project as a tar.gz file</a>
+            </section>
+        </header>
+    </div>
+
+    <!-- MAIN CONTENT -->
+    <div id="main_content_wrap" class="outer">
+      <section id="main_content" class="inner">
+        <p>This is a simple TOTP <em>(Time-based One-time Password)</em> CLI tool. You can manage your
+accounts with namespaces and protect your data with a PIN <em>(aka password)</em>.</p>
+
+<pre><code>❯ ./bin/totp-cli
+           add-token     Add new token
+                         `totp-cli add-token`
+                         This command will ask for the namespace, the account and the token
+                list     List all available namespaces or accounts under a namespace
+                         `totp-cli list`      =&gt; list all namespaces
+                         `totp-cli list myns` =&gt; list all accounts under 'myns' namespace
+            generate     Generate a specific OTP
+                         `totp-cli generate namespace.account`
+                help     This help message :)
+</code></pre>
+
+<p>TODO: Documentation :D</p>
+      </section>
+    </div>
+
+    <!-- FOOTER  -->
+    <div id="footer_wrap" class="outer">
+      <footer class="inner">
+        <p class="copyright">Totp-cli maintained by <a href="https://github.com/Yitsushi">Yitsushi</a></p>
+        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+      </footer>
+    </div>
+
+    
+
+  </body>
+</html>
