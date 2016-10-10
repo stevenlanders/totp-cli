@@ -1,64 +1,122 @@
 <!DOCTYPE html>
-<html>
-
+<html lang="en-us">
   <head>
-    <meta charset='utf-8'>
-    <meta http-equiv="X-UA-Compatible" content="chrome=1">
-    <meta name="description" content="Totp-cli : TOTP CLI tool written in Go.">
-
-    <link rel="stylesheet" type="text/css" media="screen" href="stylesheets/stylesheet.css">
-
-    <title>Totp-cli</title>
+    <meta charset="UTF-8">
+    <title>Totp-cli by Yitsushi</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" type="text/css" href="stylesheets/normalize.css" media="screen">
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:400,700' rel='stylesheet' type='text/css'>
+    <link rel="stylesheet" type="text/css" href="stylesheets/stylesheet.css" media="screen">
+    <link rel="stylesheet" type="text/css" href="stylesheets/github-light.css" media="screen">
   </head>
-
   <body>
+    <section class="page-header">
+      <h1 class="project-name">Totp-cli</h1>
+      <h2 class="project-tagline">TOTP CLI tool written in Go.</h2>
+      <a href="https://github.com/Yitsushi/totp-cli" class="btn">View on GitHub</a>
+      <a href="https://github.com/Yitsushi/totp-cli/zipball/master" class="btn">Download .zip</a>
+      <a href="https://github.com/Yitsushi/totp-cli/tarball/master" class="btn">Download .tar.gz</a>
+    </section>
 
-    <!-- HEADER -->
-    <div id="header_wrap" class="outer">
-        <header class="inner">
-          <a id="forkme_banner" href="https://github.com/Yitsushi/totp-cli">View on GitHub</a>
+    <section class="main-content">
+      <p>This is a simple TOTP <em>(Time-based One-time Password)</em> CLI tool.
+TOTP is the most common mechanism for 2FA <em>(Two-Factor-Authentication)</em>.
+You can manage and organize your accounts with namespaces
+and protect your data with a password.</p>
 
-          <h1 id="project_title">Totp-cli</h1>
-          <h2 id="project_tagline">TOTP CLI tool written in Go.</h2>
+<h3>
+<a id="install" class="anchor" href="#install" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Install</h3>
 
-            <section id="downloads">
-              <a class="zip_download_link" href="https://github.com/Yitsushi/totp-cli/zipball/master">Download this project as a .zip file</a>
-              <a class="tar_download_link" href="https://github.com/Yitsushi/totp-cli/tarball/master">Download this project as a tar.gz file</a>
-            </section>
-        </header>
-    </div>
+<p>Download the latest version of the application
+from the <a href="https://github.com/Yitsushi/totp-cli/releases/latest">releases page</a>.</p>
 
-    <!-- MAIN CONTENT -->
-    <div id="main_content_wrap" class="outer">
-      <section id="main_content" class="inner">
-        <p>This is a simple TOTP <em>(Time-based One-time Password)</em> CLI tool. You can manage your
-accounts with namespaces and protect your data with a PIN <em>(aka password)</em>.</p>
+<h3>
+<a id="update" class="anchor" href="#update" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Update</h3>
 
-<pre><code>❯ ./bin/totp-cli
-           add-token     Add new token
-                         `totp-cli add-token`
-                         This command will ask for the namespace, the account and the token
-                list     List all available namespaces or accounts under a namespace
-                         `totp-cli list`      =&gt; list all namespaces
-                         `totp-cli list myns` =&gt; list all accounts under 'myns' namespace
-            generate     Generate a specific OTP
-                         `totp-cli generate namespace.account`
-                help     This help message :)
+<pre><code>$ totp-cli update
 </code></pre>
 
-<p>TODO: Documentation :D</p>
-      </section>
-    </div>
+<h3>
+<a id="help-output" class="anchor" href="#help-output" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Help output</h3>
 
-    <!-- FOOTER  -->
-    <div id="footer_wrap" class="outer">
-      <footer class="inner">
-        <p class="copyright">Totp-cli maintained by <a href="https://github.com/Yitsushi">Yitsushi</a></p>
-        <p>Published with <a href="https://pages.github.com">GitHub Pages</a></p>
+<pre><code>$ totp-cli help
+
+add-token [namespace] [account]   Add new token
+list [namespace]                  List all available namespaces or accounts under a namespace
+delete &lt;namespace&gt;[.account]      Delete an account or a whole namespace
+change-password                   Change password
+update                            Check and update totp-cli itself
+version                           Print current version of this application
+generate &lt;namespace&gt;.&lt;account&gt;    Generate a specific OTP
+</code></pre>
+
+<h3>
+<a id="usage" class="anchor" href="#usage" aria-hidden="true"><span aria-hidden="true" class="octicon octicon-link"></span></a>Usage</h3>
+
+<p>When you run the application for the first time, it will ask
+for your password. <strong>DO NOT FORGET IT!</strong> There is no way to
+recover your password if you forget it.</p>
+
+<p>Your first command <em>(after <code>help</code>)</em> would be <code>add-token</code>. You get get
+your token read a TOTP QR Code.</p>
+
+<pre><code>$ totp-cli add-token
+Namespace: personal
+Account: digitalocean
+Token: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Password: ***
+</code></pre>
+
+<p>You can specify the namespace and the account name as a parameter:</p>
+
+<pre><code>$ totp-cli add-token personal randomaccount
+Token: XXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXXX
+Password: ***
+</code></pre>
+
+<p>If you want to delete <code>randomaccount</code> <em>(because it was a test for example)</em>,
+you can use <code>delete</code>:</p>
+
+<pre><code>$ totp-cli delete personal.randomaccount
+Password: ***
+You want to delete 'personal.randomaccount' account.
+Are you sure? yes
+</code></pre>
+
+<p>After few accounts, it's a bit hard to remember what did you added,
+so you can list namespaces:</p>
+
+<pre><code>$ totp-cli list
+Password: ***
+company1 (Number of accounts: 3)
+company2 (Number of accounts: 5)
+personal (Number of accounts: 8)
+</code></pre>
+
+<p>or you can list your accounts under a specific namespace:</p>
+
+<pre><code>$ totp-cli list personal
+Password: ***
+personal.evernote
+personal.google
+personal.github
+personal.ifttt
+personal.digitalocean
+personal.dropbox
+personal.facebook
+</code></pre>
+
+<p>If you want to change your password,
+you can do it with the <code>change-password</code> command.</p>
+
+      <footer class="site-footer">
+        <span class="site-footer-owner"><a href="https://github.com/Yitsushi/totp-cli">Totp-cli</a> is maintained by <a href="https://github.com/Yitsushi">Yitsushi</a>.</span>
+
+        <span class="site-footer-credits">This page was generated by <a href="https://pages.github.com">GitHub Pages</a> using the <a href="https://github.com/jasonlong/cayman-theme">Cayman theme</a> by <a href="https://twitter.com/jasonlong">Jason Long</a>.</span>
       </footer>
-    </div>
 
-    
+    </section>
 
+  
   </body>
 </html>
